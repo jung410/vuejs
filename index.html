@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="simple2">
+        <h2>{{message}}</h2>
+    </div>
+    <div id="simple">
+        <h2 v-html="message"></h2>
+    </div>
+    <div id="simple3">
+        <input type="text" id="a" v-bind:value="message">
+        <br>
+        <img v-bind:src="imagePath">
+    </div>
+    <div id="simple4">
+        <input type="text" v-model="name" placeholder="이름을 입력하세요.">
+        <br>
+        입력된 이름 : <h2 v-html="name"></h2>
+    </div>
+    <div id="simple5">
+        <div>좋아하는 과일을 모두 골라주세요 : </div>
+        <input type="checkbox" value="1" v-model="fruits">사과
+        <input type="checkbox" value="2" v-model="fruits">키위
+        <input type="checkbox" value="3" v-model="fruits">포도
+        <input type="checkbox" value="4" v-model="fruits">수박
+        <input type="checkbox" value="5" v-model="fruits">참외
+    </div>
+    <hr>
+    <div id="simple6">
+        선택한 과일들 : <span v-html="fruits"></span>
+    </div>
+
+    <script>
+        var model = {
+            message : '첫 번째 Vue.js 앱입니다.'
+        };
+
+        var simple = new Vue({
+            el : '#simple', // el은 html의 요소를 나타낸다.
+            data : model    // data는 요소에 적용될 값을 의미.
+        });
+
+        var model2 = {
+            message : 'v-bind 디렉티브',
+            imagePath : "http://sample.bmaster.kro.kr/photos/61.jpg"
+        };
+
+        var simple3 = new Vue({
+            el : '#simple3',
+            data : model2
+        });
+
+        var twoway = new Vue({
+            el : '#simple4',
+            data :{
+                name: ''
+            }
+        });
+
+        var model3 = {
+            fruits : []
+        }
+
+        var simple5 = new Vue({
+            el: '#simple5', data : model3
+        })
+
+        var simple6 = new Vue({
+            el: '#simple6', data : model3
+        })
+    </script>
+</body>
+</html>

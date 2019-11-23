@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        #list {width: 400px; border: 1px solid black; border-collapse: collapse;}
+        #list td, #list th{border: 1px solid black; text-align: center;}
+        #list > thead > tr {color: yellow; background: purple;}
+        .divider {height: 2px; background: gray;}
+    </style>
+</head>
+<body>
+    <div id="example">
+        <table id="list">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>전화번호</th>
+                    <th>주소</th>
+                </tr>
+            </thead>
+            <tbody id="contacts">
+                    <tr v-for="(contact, index) in contacts" v-if="contact.address.indexOf('서울')>-1">
+                        <td>{{contact.no}}</td>
+                        <td>{{contact.name}}</td>
+                        <td>{{contact.tel}}</td>
+                        <td>{{contact.address}}시</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var model = {
+            "pageno" : 1,
+            "pagesize": 10,
+            "totalcount": 100,
+            "contacts" :[
+                {"no": 100, "name": "설현", "tel": "010-1234-5678", "address" : "서울"},
+                {"no": 99, "name": "설현", "tel": "010-1234-5678", "address" : "경기"},
+                {"no": 98, "name": "설현", "tel": "010-1234-5678", "address" : "광주"},
+                {"no": 97, "name": "설현", "tel": "010-1234-5678", "address" : "울산"},
+                {"no": 96, "name": "설현", "tel": "010-1234-5678", "address" : "부산"},
+                {"no": 95, "name": "설현", "tel": "010-1234-5678", "address" : "거제"},
+                {"no": 94, "name": "설현", "tel": "010-1234-5678", "address" : "서울"},
+                {"no": 93, "name": "설현", "tel": "010-1234-5678", "address" : "여수"},
+                {"no": 92, "name": "설현", "tel": "010-1234-5678", "address" : "여주"},
+                {"no": 91, "name": "설현", "tel": "010-1234-5678", "address" : "파주"}
+            ]
+        };
+
+        var simple1 = new Vue({
+            el: "#example",
+            data: model
+        });
+    </script>
+</body>
+</html>
